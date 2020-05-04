@@ -1,0 +1,21 @@
+{
+  "name": "modern-javascript-workshop",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lean-klinker/modern-javascript-workshop.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lean-klinker/modern-javascript-workshop/issues"
+  },
+  "homepage": "https://github.com/lean-klinker/modern-javascript-workshop#readme",
+  "dependencies": {
+    "@babel/preset-env": "7.9.6",
+    "jest": "25.5.4"
+  }
+}
