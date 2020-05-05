@@ -17,4 +17,13 @@ this application little by little to use new JavaScript standards and libraries.
 The requirements for the application in question can be found [here](./docs/vending-machine.md).
 However, the need to know the requirements isn't necessary as we have tests in place that verify
 most of the application logic.
+
+# What tooling will we use?
+
+- [Karma](https://www.npmjs.com/package/karma)
+- [Jasmine](https://www.npmjs.com/package/jasmine)
+- [Webpack](https://www.npmjs.com/package/webpack)
+- [Node](https://nodejs.org/en/)
+- [NPM](https://docs.npmjs.com/)
+- [Dustjs](https://www.npmjs.com/package/dustjs-linkedin)
     
