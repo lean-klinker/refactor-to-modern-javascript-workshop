@@ -26,4 +26,5 @@ most of the application logic.
 - [Node](https://nodejs.org/en/)
 - [NPM](https://docs.npmjs.com/)
 - [Dustjs](https://www.npmjs.com/package/dustjs-linkedin)
+- [BabelJS](https://babeljs.io/)
     
