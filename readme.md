@@ -2,7 +2,7 @@
 
 During this workshop you will learn the basics of modern Javascript. 
 If you are unfamiliar with or hate JavaScript this workshop is for you. We will be 
-covering JavaScript classes, arrow functions, let vs. const vs. var, currying, npm, node, 
+covering JavaScript classes, arrow functions, let vs. const vs. var, npm, node, 
 and webpack.
 
 # What we will build?
