@@ -1,4 +1,4 @@
-export function createCoin(weight, size) {
+function createCoin(weight, size) {
     if (QUARTER.matches(weight, size)) {
         return QUARTER;
     } else if (DIME.matches(weight, size)) {
@@ -22,6 +22,6 @@ Coin.prototype.matches = function (weight, size) {
         && this.size === size;
 }
 
-export var DIME = new Coin(0.1, true, 0.5, 0.1);
-export var NICKEL = new Coin(0.05, true, 0.75, 0.5);
-export var QUARTER = new Coin(0.25, true, 1, 1);
+var DIME = new Coin(0.1, true, 0.5, 0.1);
+var NICKEL = new Coin(0.05, true, 0.75, 0.5);
+var QUARTER = new Coin(0.25, true, 1, 1);

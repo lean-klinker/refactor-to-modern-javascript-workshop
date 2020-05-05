@@ -1,6 +1,4 @@
-import {DIME, NICKEL, QUARTER} from "./coin-factory";
-
-export function makeChange(balance, cost) {
+function makeChange(balance, cost) {
     var remainingBalance = balance - cost;
     var change = [];
     while (remainingBalance > 0) {
