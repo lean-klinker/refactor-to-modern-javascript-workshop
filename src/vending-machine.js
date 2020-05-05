@@ -62,7 +62,7 @@ VendingMachine.prototype.getBalance = function () {
 }
 
 VendingMachine.prototype.returnCoins = function () {
-    for (let i = 0; i < this.insertedCoins.length; i++) {
+    for (var i = 0; i < this.insertedCoins.length; i++) {
         this.returnedCoins.push(this.insertedCoins[i]);
     }
     this.insertedCoins = [];
