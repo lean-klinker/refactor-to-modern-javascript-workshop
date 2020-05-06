@@ -1,18 +1,17 @@
-function VendingMachine() {
-    this.numberFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-    this.returnedCoins = [];
-    this.insertedCoins = [];
-    this.products = [];
+var products = [];
+var insertedCoins = [];
+var returnedCoins = [];
+var numberFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+var tempText = null;
+
+function addProduct(product) {
+    products.push(product);
 }
 
-VendingMachine.prototype.addProduct = function (product) {
-    this.products.push(product);
-}
-
-VendingMachine.prototype.getDisplayText = function() {
-    if (this.text) {
-        var text = this.text;
-        this.text = null;
+function getDisplayText() {
+    if (tempText) {
+        var text = tempText;
+        tempText = null;
         return text;
     }
 
@@ -23,47 +22,47 @@ VendingMachine.prototype.getDisplayText = function() {
     return 'INSERT COIN';
 }
 
-VendingMachine.prototype.insertCoin = function (weight, size) {
+function insertCoin(weight, size) {
     var coin = createCoin(weight, size);
     if (coin.isValid) {
-        this.insertedCoins.push(coin);
+        insertedCoins.push(coin);
     } else {
-        this.returnedCoins.push({ weight, size });
+        returnedCoins.push({ weight, size });
     }
 }
 
-VendingMachine.prototype.selectProduct = function (location) {
-    var product = this.products.find(p => p.location === location);
+function selectProduct(location) {
+    var product = products.find(p => p.location === location);
     if (product) {
-        return this.dispenseProduct(product);
+        return dispenseProduct(product);
     } else {
-        this.text = 'SOLD OUT';
+        tempText = 'SOLD OUT';
         return null;
     }
 }
 
-VendingMachine.prototype.dispenseProduct = function (product) {
-    var balance = this.getBalance();
+function dispenseProduct(product) {
+    var balance = getBalance();
     if (balance >= product.cost) {
-        this.insertedCoins = [];
-        this.returnedCoins = makeChange(balance, product.cost);
-        this.text = 'THANK YOU';
+        insertedCoins = [];
+        returnedCoins = makeChange(balance, product.cost);
+        tempText = 'THANK YOU';
         return product;
     } else {
-        this.text = 'PRICE ' + this.numberFormatter.format(product.cost);
+        tempText = 'PRICE ' + numberFormatter.format(product.cost);
         return null;
     }
 }
 
-VendingMachine.prototype.getBalance = function () {
-    return this.insertedCoins.reduce(function (total, coin) {
+function getBalance() {
+    return insertedCoins.reduce(function (total, coin) {
         return total + coin.value;
     }, 0);
 }
 
-VendingMachine.prototype.returnCoins = function () {
-    for (var i = 0; i < this.insertedCoins.length; i++) {
-        this.returnedCoins.push(this.insertedCoins[i]);
+function returnCoins() {
+    for (var i = 0; i < insertedCoins.length; i++) {
+        returnedCoins.push(insertedCoins[i]);
     }
-    this.insertedCoins = [];
+    insertedCoins = [];
 }
