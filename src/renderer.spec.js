@@ -53,4 +53,14 @@ describe('renderer', function () {
 
         expect($('#available-products').text()).toContain('CANDY');
     })
+
+    it('when coins returned then returned coins are shown', function () {
+        $('#insert-nickel-btn').trigger('click');
+        $('#insert-quarter-btn').trigger('click');
+
+        $('#return-coins-btn').trigger('click');
+
+        expect($('#returned-coins').text()).toContain('0.05')
+        expect($('#returned-coins').text()).toContain('0.25')
+    })
 })

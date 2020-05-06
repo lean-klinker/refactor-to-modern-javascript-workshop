@@ -32,9 +32,9 @@
             {/products}
         </ul>
     </div>
-    <div>
+    <div >
         <h3>Returned Coins</h3>
-        <ul style="list-style-type: none;">
+        <ul id="returned-coins" style="list-style-type: none;">
             {#returnedCoins}
             <li>{value}, {isValid}, {weight}, {size}</li>
             {/returnedCoins}

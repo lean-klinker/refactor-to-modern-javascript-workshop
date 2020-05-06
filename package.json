@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "test": "karma start",
+    "test:single": "karma start --single-run",
     "start": "node ./src/server.js"
   },
   "repository": {
