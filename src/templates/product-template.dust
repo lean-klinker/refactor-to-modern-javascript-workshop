@@ -1,0 +1,4 @@
+<div>
+    <h3>Dispensed Product</h3>
+    <span>{location}, {cost}, {name}</span>
+</div>

@@ -1,0 +1,42 @@
+<div>
+    <div>
+        <h3>Display</h3>
+        {displayText}
+
+        <br/>
+
+        <span>
+                <label for="product-location">Location</label>
+                <input type="text" id="product-location" />
+                <button id="select-product-btn">Select</button>
+            </span>
+    </div>
+    <div>
+        <h3>Insert Coins</h3>
+        <button id="insert-quarter-btn">Insert Quarter</button>
+        <button id="insert-dime-btn">Insert Dime</button>
+        <button id="insert-nickel-btn">Insert Nickel</button>
+    </div>
+    <div>
+        <h3>Add Products</h3>
+        <button id="add-chips-btn">Add Chips</button>
+        <button id="add-candy-btn">Add Candy</button>
+        <button id="add-cola-btn">Add Cola</button>
+    </div>
+    <div>
+        <h3>Available Products</h3>
+        <ul style="list-style-type: none;">
+            {#products}
+            <li>{location}, {cost}, {name}</li>
+            {/products}
+        </ul>
+    </div>
+    <div>
+        <h3>Returned Coins</h3>
+        <ul style="list-style-type: none;">
+            {#returnedCoins}
+            <li>{value}, {isValid}, {weight}, {size}</li>
+            {/returnedCoins}
+        </ul>
+    </div>
+</div>

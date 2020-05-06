@@ -2,53 +2,63 @@ var TEMPLATE_NAMES = {
     VENDING_MACHINE: 'vending-machine',
     PRODUCT: 'product'
 }
-var vendingMachine = new VendingMachine();
 var dispensedProduct = null;
 
 function initializeTemplates() {
-    var vendingMachineTemplate = $('#vending-machine-template').html();
-    var compiledVendingMachineTemplate = dust.compile(vendingMachineTemplate, TEMPLATE_NAMES.VENDING_MACHINE);
-    dust.loadSource(compiledVendingMachineTemplate);
+    $.ajax({
+        url: 'templates/vending-machine-template.dust',
+        method: 'GET',
+        success: function (vendingMachineTemplate) {
+            var compiledVendingMachineTemplate = dust.compile(vendingMachineTemplate, TEMPLATE_NAMES.VENDING_MACHINE);
+            dust.loadSource(compiledVendingMachineTemplate);
+            renderVendingMachine();
+        }
+    });
 
-    var productTemplate = $('#product-template').html();
-    var compiledProductTempalte = dust.compile(productTemplate, TEMPLATE_NAMES.PRODUCT);
-    dust.loadSource(compiledProductTempalte);
+    $.ajax({
+        url: 'templates/product-template.dust',
+        method: 'GET',
+        success: function (productTemplate) {
+            var compiledProductTemplate = dust.compile(productTemplate, TEMPLATE_NAMES.PRODUCT);
+            dust.loadSource(compiledProductTemplate);
+        }
+    });
 }
 
 function setupButtonHandlers() {
     $('#insert-quarter-btn').click(function () {
-        vendingMachine.insertCoin(QUARTER.weight, QUARTER.size);
+        insertCoin(QUARTER.weight, QUARTER.size);
         renderVendingMachine();
     });
 
     $('#insert-dime-btn').click(function () {
-        vendingMachine.insertCoin(DIME.weight, DIME.size);
+        insertCoin(DIME.weight, DIME.size);
         renderVendingMachine();
     });
 
     $('#insert-nickel-btn').click(function () {
-        vendingMachine.insertCoin(NICKEL.weight, NICKEL.size);
+        insertCoin(NICKEL.weight, NICKEL.size);
         renderVendingMachine();
     })
 
     $('#add-chips-btn').click(function () {
-        vendingMachine.addProduct({ location: 'A1', cost: 0.50, name: 'CHIPS' })
+        addProduct({ location: 'A1', cost: 0.50, name: 'CHIPS' })
         renderVendingMachine();
     })
 
     $('#add-candy-btn').click(function () {
-        vendingMachine.addProduct({ location: 'A2', cost: 0.65, name: 'CANDY' })
+        addProduct({ location: 'A2', cost: 0.65, name: 'CANDY' })
         renderVendingMachine();
     })
 
     $('#add-cola-btn').click(function () {
-        vendingMachine.addProduct({ location: 'A3', cost: 1.00, name: 'COLA' })
+        addProduct({ location: 'A3', cost: 1.00, name: 'COLA' })
         renderVendingMachine();
     })
 
     $('#select-product-btn').click(function () {
         var location = $('#product-location').val();
-        dispensedProduct = vendingMachine.selectProduct(location);
+        dispensedProduct = selectProduct(location);
         renderVendingMachine();
         renderDispensedProduct();
     })
@@ -56,9 +66,9 @@ function setupButtonHandlers() {
 
 function renderVendingMachine() {
     var viewModel = {
-        displayText: vendingMachine.getDisplayText(),
-        returnedCoins: vendingMachine.returnedCoins,
-        products: vendingMachine.products
+        displayText: getDisplayText(),
+        returnedCoins: returnedCoins,
+        products: products
     }
     dust.render(TEMPLATE_NAMES.VENDING_MACHINE, viewModel, function (error, content) {
         $('#vending-machine').html(content);
