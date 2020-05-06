@@ -41,6 +41,11 @@ function setupButtonHandlers() {
         renderVendingMachine();
     })
 
+    $('#return-coins-btn').click(function () {
+        returnCoins();
+        renderVendingMachine();
+    })
+
     $('#add-chips-btn').click(function () {
         addProduct({ location: 'A1', cost: 0.50, name: 'CHIPS' })
         renderVendingMachine();
