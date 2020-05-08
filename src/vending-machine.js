@@ -15,8 +15,8 @@ function getDisplayText() {
         return text;
     }
 
-    if (this.insertedCoins.length > 0) {
-        return this.numberFormatter.format(this.getBalance());
+    if (insertedCoins.length > 0) {
+        return numberFormatter.format(getBalance());
     }
 
     return 'INSERT COIN';
