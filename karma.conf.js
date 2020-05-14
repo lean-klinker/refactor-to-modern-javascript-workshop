@@ -6,9 +6,6 @@ module.exports = function (config) {
             'https://code.jquery.com/jquery-3.5.1.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.7.5/dust-full.min.js',
             'test-setup.js',
-            'change-maker.js',
-            'coin-factory.js',
-            'vending-machine.js',
             'renderer.js',
             {pattern: '**/*.dust', included: false, served: true },
             '**/*.spec.js'
