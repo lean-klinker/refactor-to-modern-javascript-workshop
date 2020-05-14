@@ -10,6 +10,14 @@ module.exports = {
             template: './src/index.html'
         })
     ],
+    module: {
+        rules: [
+            {
+                test: /\.js/,
+                use: ['script-loader']
+            }
+        ]
+    },
     devServer: {
         setup: function (app) {
             app.use('/templates', express.static('./src/templates'));
