@@ -1,5 +1,3 @@
-const webpackConfig = require('./webpack.config');
-
 module.exports = function (config) {
     config.set({
         basePath: './src',
@@ -14,7 +12,6 @@ module.exports = function (config) {
         ],
         exclude: [],
         preprocessors: {
-            '**/*.js': ['webpack']
         },
         reporters: ['progress'],
         port: 9876,
@@ -29,10 +26,6 @@ module.exports = function (config) {
         },
         proxies: {
             '/templates/': '/base/templates/'
-        },
-        webpack: {
-            ...webpackConfig,
-            entry: undefined
         }
     })
 }
